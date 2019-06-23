@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { withTheme } from "styled-components";
+import React, { useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 
 import logo from "./logo.svg";
 
@@ -19,8 +19,9 @@ const Button = styled.button`
   padding: 0.5em 1em;
 `;
 
-// theme приходит из withTheme декоратора https://www.styled-components.com/docs/advanced#getting-the-theme-without-styled-components
-function App({ theme }) {
+// theme приходит из ThemeContext https://www.styled-components.com/docs/advanced#getting-the-theme-without-styled-components
+function App() {
+  const theme = useContext(ThemeContext); // получаем цвет
   const themeToggle = useTheme(); // возвращает из контекста { toggle: toggle }
 
   return (
@@ -38,4 +39,4 @@ function App({ theme }) {
   );
 }
 
-export default withTheme(App);
+export default App;
